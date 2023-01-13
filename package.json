@@ -7,6 +7,11 @@
   },
   "private": true,
   "dependencies": {
+    "@emotion/react": "^11.10.5",
+    "@emotion/server": "^11.10.0",
+    "@emotion/styled": "^11.10.5",
+    "@mui/icons-material": "^5.11.0",
+    "@mui/material": "^5.11.4",
     "@nrwl/next": "15.4.4",
     "core-js": "^3.6.5",
     "dotenv": "^16.0.3",
@@ -16,6 +21,7 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "regenerator-runtime": "0.13.7",
+    "styled-components": "^5.3.6",
     "tslib": "^2.3.0"
   },
   "devDependencies": {
@@ -35,6 +41,7 @@
     "@types/node": "18.7.1",
     "@types/react": "18.0.25",
     "@types/react-dom": "18.0.9",
+    "@types/styled-components": "^5.1.26",
     "@typescript-eslint/eslint-plugin": "^5.36.1",
     "@typescript-eslint/parser": "^5.36.1",
     "babel-jest": "28.1.1",
