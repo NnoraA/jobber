@@ -1,12 +1,20 @@
-/**
- * This is not a production server yet!
- * This is only a minimal backend to get started.
- */
-
 import * as express from 'express';
 import * as path from 'path';
+import { DataSource } from 'typeorm';
+import { User } from './entity/user';
 
 const app = express();
+
+export const myDataSource = new DataSource({
+  type: "postgres",
+  host: "localhost",
+  port: 5432,
+  username: "postgres",
+  password: "postgres",
+  database: "db",
+  entities: [User],
+  synchronize: true
+ })
 
 app.use('/assets', express.static(path.join(__dirname, 'assets')));
 
@@ -15,7 +23,13 @@ app.get('/api', (req, res) => {
 });
 
 const port = process.env.port || 3333;
-const server = app.listen(port, () => {
-  console.log(`Listening at http://localhost:${port}/api`);
-});
-server.on('error', console.error);
+myDataSource.initialize().then((f) => {
+  const server = app.listen(port, () => {
+    console.log(f.entityMetadatas);
+
+    console.log(`Listening at http://localhost:${port}/api`);
+  });
+  server.on('error', console.error);
+
+})
+
